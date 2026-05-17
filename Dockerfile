@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y ffmpeg build-essential && rm -rf /var/l
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir "Cython>=0.29.35" numpy \
+RUN pip install --no-cache-dir "Cython>=0.29.35" numpy torch torchaudio \
     && pip install --no-cache-dir --no-build-isolation allin1==0.0.3 \
     && grep -v '^allin1==' requirements.txt > /tmp/requirements-no-allin1.txt \
     && pip install --no-cache-dir -r /tmp/requirements-no-allin1.txt
